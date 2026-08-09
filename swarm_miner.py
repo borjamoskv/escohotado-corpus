@@ -86,9 +86,11 @@ def main():
 
     print(f"[*] Total de subagentes (chunks) programados: {len(tasks)}")
     
-    # [MINERÍA SWARM PxS]
-    num_cores = max(1, mp.cpu_count() - 1)
-    print(f"[*] Orquestando enjambre con {num_cores} procesos paralelos...")
+    import sys
+    num_cores = 21
+    if len(sys.argv) > 1 and sys.argv[1].isdigit():
+        num_cores = int(sys.argv[1])
+    print(f"[*] Orquestando enjambre PxS con {num_cores} agentes autónomos paralelos...")
     
     unique_hashes = set()
     records = []

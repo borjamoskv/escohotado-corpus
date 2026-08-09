@@ -1,29 +1,70 @@
 {
-  "repository": "Escota (Antonio Escohotado) Specialized Corpus",
+  "repository": "Escota (Antonio Escohotado & C5-REAL) Multi-Domain Corpus",
+  "version": "2.5.0",
+  "invariants": ["Ω118", "C5-REAL", "AASAD"],
   "works": [
     {
-      "id": "escohotado-a.-realidad-y-substancia-epl-fs-2023",
+      "id": "escohotado-realidad-y-substancia",
       "short_name": "realidad_y_substancia",
-      "title": "Realidad y Substancia (Física Primera / Ontología Monista)",
+      "title": "Realidad y Substancia (Ontología Monista & Física Primera)",
       "year": 1985,
-      "remote_file": "Escohotado, A. - Realidad y substancia [EPL-FS] [2023]_djvu.txt",
-      "format": "DjVuTXT",
+      "format": "TXT",
       "category": "Ontología & Metafísica",
-      "local_path": "scratch/corpus/escota/texts/realidad_y_substancia_djvu.txt",
-      "bytes": 907608,
-      "archive_url": "https://archive.org/details/escohotado-a.-realidad-y-substancia-epl-fs-2023"
+      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/realidad_y_substancia_djvu.txt"
     },
     {
-      "id": "escohotado-a.-caos-y-orden-ocr-1999",
+      "id": "escohotado-caos-y-orden",
       "short_name": "caos_y_orden",
       "title": "Caos y Orden (Termodinámica de Sistemas Complejos)",
       "year": 1999,
-      "remote_file": "Escohotado, A. - Caos y orden [ocr] [1999]_djvu.txt",
-      "format": "DjVuTXT",
+      "format": "TXT",
       "category": "Física & Sistemas Complejos",
-      "local_path": "scratch/corpus/escota/texts/caos_y_orden_djvu.txt",
-      "bytes": 694450,
-      "archive_url": "https://archive.org/details/escohotado-a.-caos-y-orden-ocr-1999"
+      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/caos_y_orden_djvu.txt"
+    },
+    {
+      "id": "escohotado-enemigos-del-comercio-ing-inv",
+      "short_name": "enemigos_del_comercio",
+      "title": "Ingeniería Inversa: Los Enemigos del Comercio",
+      "year": 2026,
+      "format": "MD",
+      "category": "Praxeología & Economía",
+      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/ingenieria_inversa_enemigos_del_comercio_escohotado.md"
+    },
+    {
+      "id": "escohotado-historia-drogas-ing-inv",
+      "short_name": "historia_drogas",
+      "title": "Ingeniería Inversa: Historia General de las Drogas",
+      "year": 2026,
+      "format": "MD",
+      "category": "Soberanía Cognitiva & Autonomía",
+      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/ingenieria_inversa_historia_drogas_escohotado.md"
+    },
+    {
+      "id": "escohotado-caos-y-orden-ing-inv",
+      "short_name": "caos_y_orden_ing_inv",
+      "title": "Ingeniería Inversa: Caos y Orden",
+      "year": 2026,
+      "format": "MD",
+      "category": "Sistemas Disipativos & Babylon60",
+      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/ingenieria_inversa_caos_y_orden_escohotado.md"
+    },
+    {
+      "id": "c5-real-sovereign-agent-manifesto",
+      "short_name": "sovereign_agent_manifesto",
+      "title": "Manifiesto de Agentes Soberanos C5-REAL",
+      "year": 2026,
+      "format": "MD",
+      "category": "Gobernanza & Soberanía",
+      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/sovereign_agent_manifesto.md"
+    },
+    {
+      "id": "c5-real-trust-semantics",
+      "short_name": "trust_semantics",
+      "title": "Semántica de Confianza e Inmunidad C5-REAL",
+      "year": 2026,
+      "format": "MD",
+      "category": "Seguridad & Inmunidad",
+      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/TRUST-SEMANTICS.md"
     }
   ]
 }
