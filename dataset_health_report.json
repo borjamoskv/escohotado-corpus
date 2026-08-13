@@ -1,0 +1,43 @@
+{
+  "status": "VALIDATED",
+  "seed": 3407,
+  "total_unique_samples": 28792,
+  "total_duplicates_purged": 0,
+  "total_estimated_tokens": 13146011,
+  "splits": {
+    "train_samples": 27352,
+    "valid_samples": 1440
+  },
+  "domain_breakdown": {
+    "Ingeniero": {
+      "source": "/Users/borjafernandezangulo/10_PROJECTS/20_VAULT/babylon60/lora_domains/moskv1_ingeniero_sharegpt.jsonl",
+      "count": 21581,
+      "duplicates": 0,
+      "estimated_tokens": 9579550
+    },
+    "Físico": {
+      "source": "/Users/borjafernandezangulo/10_PROJECTS/20_VAULT/babylon60/lora_domains/moskv1_fisico_sharegpt.jsonl",
+      "count": 2580,
+      "duplicates": 0,
+      "estimated_tokens": 1310234
+    },
+    "Médico": {
+      "source": "/Users/borjafernandezangulo/10_PROJECTS/20_VAULT/babylon60/lora_domains/moskv1_medico_sharegpt.jsonl",
+      "count": 2388,
+      "duplicates": 0,
+      "estimated_tokens": 1014377
+    },
+    "Músico": {
+      "source": "/Users/borjafernandezangulo/10_PROJECTS/20_VAULT/babylon60/lora_domains/moskv1_musico_sharegpt.jsonl",
+      "count": 2123,
+      "duplicates": 0,
+      "estimated_tokens": 1179625
+    },
+    "Abogado": {
+      "source": "/Users/borjafernandezangulo/10_PROJECTS/20_VAULT/babylon60/lora_domains/moskv1_abogado_sharegpt.jsonl",
+      "count": 120,
+      "duplicates": 0,
+      "estimated_tokens": 62225
+    }
+  }
+}
