@@ -101,29 +101,37 @@ El corpus Escohotado está directamente integrado en los motores del proyecto:
 
 ---
 
-## 🛠️ 6. Herramientas CLI y Comandos
+## 🛠️ 6. Herramientas CLI y Orquestador de Entrenamiento MOSKV-1 v2.0
+
+### Orquestador Unificado (`moskv1_pipeline.py`)
 
 ```bash
-# 1. Minería paralela con enjambre de 21 agentes autónomos
-python3 swarm_miner.py 21
+# 1. Estado general del sistema, datasets y métricas de tokens
+python3 moskv1_pipeline.py status
 
-# 2. Búsqueda epistémica insensible a acentos sobre las 23 fuentes
-python3 escota_search.py "termodinamica"
-python3 escota_search.py "monismo"
-python3 escota_search.py "exergia"
+# 2. Ingesta, deduplicación SHA-256 y generación de splits MLX (train/valid)
+python3 moskv1_pipeline.py prepare
 
-# 3. Auditoría metrológica de dataset y cálculo de Merkle Root
-python3 audit_21_swarm_dataset.py
+# 3. Benchmark e inferencia multi-dominio (evaluador de léxico C5-REAL)
+python3 moskv1_pipeline.py evaluate --dry-run
+
+# 4. Lanzar fine-tuning local en Apple Silicon Metal (MLX)
+python3 moskv1_pipeline.py train-mlx --model mlx-community/Mistral-7B-Instruct-v0.3-4bit --iters 1000 --fuse
+
+# 5. Generar comandos para entrenamiento CUDA en la nube (Unsloth + DoRA)
+python3 moskv1_pipeline.py train-unsloth --model-name unsloth/Mistral-7B-Instruct-v0.3-bnb-4bit --export-gguf q4_k_m
 ```
 
-### 💻 Ejemplo de Ingesta en Python (HuggingFace / Unsloth)
+### Herramientas Heredadas
+```bash
+# Minería paralela con enjambre de 21 agentes autónomos
+python3 swarm_miner.py 21
 
-```python
-from datasets import load_dataset
+# Búsqueda epistémica insensible a acentos sobre las fuentes
+python3 escota_search.py "termodinamica"
 
-# Cargar el dataset de fine-tuning purgado
-dataset = load_dataset("json", data_files="moskv1_filosofo_sharegpt.jsonl")
-print(f"Dataset cargado: {len(dataset['train'])} ejemplos de alta exergía.")
+# Auditoría metrológica de dataset y cálculo de Merkle Root
+python3 audit_21_swarm_dataset.py
 ```
 
 ---
@@ -132,3 +140,4 @@ print(f"Dataset cargado: {len(dataset['train'])} ejemplos de alta exergía.")
 
 > [!NOTE]
 > Toda la obra de Antonio Escohotado fue declarada explícitamente por el autor en modalidad **Copyfree** (libre distribución, copia y acceso universal al conocimiento), eliminando monopolios artificiales de difusión. La conservación e ingesta de su corpus en `escohotado-corpus/` respeta íntegramente la voluntad expresa del pensador.
+
