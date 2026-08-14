@@ -49,6 +49,15 @@
       "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/ingenieria_inversa_caos_y_orden_escohotado.md"
     },
     {
+      "id": "escohotado-somos-informacion-somos-bytes-ing-inv",
+      "short_name": "somos_informacion_somos_bytes",
+      "title": "Ingeniería Inversa: Somos Información, Somos Bytes (Antonio Escohotado & Toni Segarra)",
+      "year": 2026,
+      "format": "MD",
+      "category": "Información & Publicidad",
+      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/ingenieria_inversa_somos_informacion_somos_bytes_escohotado_segarra.md"
+    },
+    {
       "id": "c5-real-sovereign-agent-manifesto",
       "short_name": "sovereign_agent_manifesto",
       "title": "Manifiesto de Agentes Soberanos C5-REAL",
