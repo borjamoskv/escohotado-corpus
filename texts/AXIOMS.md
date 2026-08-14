@@ -67,3 +67,32 @@ Un Gobernador Soberano asume responsabilidad total, ejecutando rutinas integrada
 La ingesta de contexto y código fuente abandona el paradigma de "NLP clásico" basado en el parseo de texto lineal.
 
 - **Caché Compartida + Ingesta AST:** Todo material sintáctico debe ser procesado mediante Ingesta Determinista AST, extrayendo árboles lógicos precisos que se inyectan en una Caché Compartida, eliminando la ambigüedad del análisis de cadenas y preservando jerarquías causales inmutables.
+
+## AX-IX: Transducción del Comercio y Desplazamiento de la Violencia
+
+La sustitución de la desposesión coercitiva material por la señalización libre informacional disipa la entropía de suma cero del sistema social.
+
+- **Invariante de Señalización Libre:** El comercio y la publicidad constituyen la infraestructura de señalización de voluntariedad. Reemplazan el conflicto violento por acuerdos de suma positiva mediante la emisión transparente de precios, intenciones y especificaciones de bienes.
+- **Reducción de Fricción Física:** Mover bytes de señalización informacional disipa órdenes de magnitud menos energía (Límite de Landauer $E = k_B T \ln 2$) que desplazar masa física para la resolución a ciegas de necesidades.
+
+## AX-X: La Paradoja de Jevons Cognitiva y el Criterio Irreductible
+
+La automatización masiva de la generación sintáctica reduce a cero el coste marginal de los bytes, elevando exponencialmente el valor del juicio fenomenológico.
+
+- **Colapso del Valor de la Sintaxis:** La multiplicación estocástica de texto y código sin barreras no produce inteligencia; genera ruido y sobrecarga cognitiva (*Cognitive Burnout*).
+- **Invariante Vital ("El Bicho se Llama Vida"):** La capacidad de juicio ético, dirección estratégica, intención semántica y falsación popperiana es irreductible a la pura sintaxis computacional y pertenece soberanamente al operador consciente humano.
+
+## AX-XI: Topología de Red Mesh vs. Monolito Unidireccional
+
+La topología distribuida de pares (*mesh*) restituye la complejidad interactiva natural frente al colapso pasivo de emisión centralizada.
+
+- **Superación de la Televisión:** Los medios de emisión masiva unidireccional colapsan la entropía interactiva ($H_{\text{TV}} \to 0$), degradando la variabilidad adaptativa de los receptores.
+- **Redes Mesh Agénticas:** Los entornos agénticos e Internet operan como grafos distribuidos de alta complejidad interactiva, estabilizando el equilibrio sistémico mediante retroalimentación constante de múltiples nodos.
+
+## AX-XII: Atestación de Señal Publicitaria y Reducción del Lemons Market
+
+La opacidad informacional conduce inexorablemente a la selección adversa y al colapso del valor de mercado.
+
+- **Sello de Reputación Criptográfica:** La señalización publicitaria atestada (mediante firmas Ed25519, ledger SCITT RFC 9943 y hashes Merkle) actúa como prueba de costo diferido (*signaling theory*), garantizando el compromiso a largo plazo del emisor.
+- **Estabilización de Nash:** La transparencia total de la señal transforma juegos de desconfianza (Lemons Market de Akerlof) en equilibrios de cooperación estable ($\text{Tit-for-Tat}$ con perdón).
+
