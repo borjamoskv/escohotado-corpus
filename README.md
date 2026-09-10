@@ -18,18 +18,18 @@
 │  Métrica                             Valor Verificado    │
 ├──────────────────────────────────────────────────────────┤
 │  Arquitectura de Enjambre          21 Agentes PxS        │
-│  N-Zonas Únicas Extraídas            830 N-Zonas         │
-│  Mensajes ChatML / ShareGPT          2,490 Mensajes      │
-│  Tokens Estimados totales            486,032 Tokens      │
+│  N-Zonas Únicas Extraídas            836 N-Zonas         │
+│  Mensajes ChatML / ShareGPT          2,508 Mensajes      │
+│  Tokens Estimados totales            489,123 Tokens      │
 │  Deduplicación                       100.0% Bit-Perfect  │
 │  Estructura de Roles ChatML          100.0% Válida       │
-│  Fuentes Documentales Activas        23 Fuentes          │
+│  Fuentes Documentales Activas        25 Fuentes          │
 └──────────────────────────────────────────────────────────┘
 ```
 
 > [!NOTE]
 > **Atestación Merkle Root (SHA-256):**
-> `90bf2b03024c4c2cd95461d10222be20dc682a111c0d26e47383cbd70c71b551`
+> `620d94266c04e39d2a30035f2b6d23ec6996ea67fa4fb85daabcb2a66e9a41bc`
 
 ---
 
@@ -37,31 +37,33 @@
 
 ```mermaid
 graph TD
-    A["23 Fuentes Documentales<br/>(Escohotado + C5-REAL Papers)"] --> B["ENJAMBRE DE 21 AGENTES (PxS)<br/>(swarm_miner.py 21)"]
+    A["25 Fuentes Documentales<br/>(Escohotado + C5-REAL Papers)"] --> B["ENJAMBRE DE 21 AGENTES (PxS)<br/>(swarm_miner.py 21)"]
     B --> C["DEDUPLICACIÓN BIT-PERFECT<br/>(SHA-256 Hash Matching)"]
-    C --> D["CADENA DE CUSTODIA<br/>(Merkle Tree SHA3-256)"]
-    D --> E["DATASET SHAREGPT/CHATML<br/>(moskv1_filosofo_sharegpt.jsonl)"]
+    C --> D["CADENA DE CUSTODIA<br/>(Merkle Tree SHA-256)"]
+    D --> E["DATASET FILÓSOFO CHATML<br/>(moskv1_filosofo_sharegpt.jsonl)"]
+    E --> F["DATASET MAESTRO MOSKV-1 (6 DOMINIOS)<br/>(29,628 muestras / ~13.75M tokens)"]
 
     style A fill:#87A78E,color:#fff
     style B fill:#8B9FD4,color:#fff
     style C fill:#C4B4E0,color:#fff
     style D fill:#F4A683,color:#fff
     style E fill:#87A78E,color:#fff
+    style F fill:#8B9FD4,color:#fff
 ```
 
 ---
 
-## 📚 3. Desglose de Fuentes Integradas (23 Fuentes / 830 N-Zonas)
+## 📚 3. Desglose de Fuentes Integradas (25 Fuentes / 836 N-Zonas)
 
 | # | Fuente / Documento | Categoría Ontológica | N-Zonas | Cobertura |
 |:---|:---|:---|:---:|:---:|
-| 1 | 📖 `realidad_y_substancia_djvu.txt` | Monismo & Física Primera | **405** | 48.8% |
-| 2 | 📖 `caos_y_orden_djvu.txt` | Sistemas Disipativos & Azar | **309** | 37.2% |
+| 1 | 📖 `realidad_y_substancia_djvu.txt` | Monismo & Física Primera | **405** | 48.4% |
+| 2 | 📖 `caos_y_orden_djvu.txt` | Sistemas Disipativos & Azar | **309** | 37.0% |
 | 3 | 🏛️ `sovereign_agent_manifesto.md` | Manifiesto de Soberanía Cognitiva | **19** | 2.3% |
 | 4 | 🛡️ `TRUST-SEMANTICS.md` | Semántica de Confianza e Inmunidad | **9** | 1.1% |
 | 5 | ⚖️ `estado-publico-claims-y-limites.md` | Prevalencia Humana & Límites | **9** | 1.1% |
 | 6 | 🧠 `cognitive_sovereignty_architectures.md` | Arquitectura de Soberanía | **8** | 1.0% |
-| 7 | 📊 `comparativa-memoria-agentes-ia-2026.md` | Memoria & Evidencia Criptográfica | **7** | 0.8% |
+| 7 | 📊 `comparativa-memoria-agentes-ia-2026.md` | Memoria & Evidencia Criptográfica | **6** | 0.7% |
 | 8 | ⚡ `CORTEX-NATIVE-TECHNOLOGIES.md` | Tecnologías Nativas C5-REAL | **6** | 0.7% |
 | 9 | 🔬 `CORTEX-CAPABILITIES.md` | Kernel & Capacidades | **6** | 0.7% |
 | 10 | 🔮 `ultrathink-vs-deep-think-2026.md` | Física de Inferencia Ultrathink | **6** | 0.7% |
@@ -71,13 +73,15 @@ graph TD
 | 14 | 📐 `teorias_fundamentales.md` | Fundamentación Matemática | **4** | 0.5% |
 | 15 | 🧮 `peano-soberano.md` | Axiomática de Peano Soberana | **4** | 0.5% |
 | 16 | 📜 `por-que-los-agentes-necesitan-memoria-con-evidencia.md` | Evidencia en Memoria OS | **4** | 0.5% |
-| 17 | 📜 `AXIOMS.md` | Registro de Axiomas | **3** | 0.4% |
+| 17 | 📜 `AXIOMS.md` | Registro de Axiomas (AX-I a AX-XII) | **4** | 0.5% |
 | 18 | ⚖️ `ingenieria_inversa_enemigos_del_comercio_escohotado.md` | Praxeología e Intercambio Libre | **3** | 0.4% |
 | 19 | 🧪 `ingenieria_inversa_historia_drogas_escohotado.md` | Soberanía Farmacológica/Cognitiva | **3** | 0.4% |
-| 20 | 📄 `CORTEX_ARCHITECTURE_WHITEPAPER.md` | Whitepaper de Arquitectura | **3** | 0.4% |
-| 21 | 🌪️ `termodinamica_enjambres.md` | Física Disipativa de Enjambres | **3** | 0.4% |
-| 22 | 🛡️ `IMMUNITY-LAYER.md` | Capa de Inmunidad del Kernel | **3** | 0.4% |
-| 23 | 🧩 `ingenieria_inversa_caos_y_orden_escohotado.md` | Mapeo Escohotado-C5 | **2** | 0.2% |
+| 20 | 📻 `ingenieria_inversa_somos_informacion_somos_bytes_escohotado_segarra.md` | Deconstrucción Informacional & Publicidad | **3** | 0.4% |
+| 21 | 📄 `CORTEX_ARCHITECTURE_WHITEPAPER.md` | Whitepaper de Arquitectura | **3** | 0.4% |
+| 22 | 🌪️ `termodinamica_enjambres.md` | Física Disipativa de Enjambres | **3** | 0.4% |
+| 23 | 🛡️ `IMMUNITY-LAYER.md` | Capa de Inmunidad del Kernel | **3** | 0.4% |
+| 24 | 🧩 `ingenieria_inversa_caos_y_orden_escohotado.md` | Mapeo Escohotado-C5 | **2** | 0.2% |
+| 25 | 🏛️ `FORMAL_SYSTEM_ESCOHOTADO.md` | Sistema Deductivo $\mathcal{G}_{\text{ESCOTA}}$ | **2** | 0.2% |
 
 ---
 

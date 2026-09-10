@@ -29,13 +29,13 @@ Toda auditoría y evaluación de sistemas dinámicos en el proyecto sigue el Inv
 
 ## 3. Principio de Licenciamiento "Copyfree"
 
-Toda la obra de Antonio Escohotado fue declarada explícitamente por el autor en modalidad **Copyfree** (libre distribución, copia y acceso universal al conocimiento), eliminando monopolios artificiales de difusión. La conservación e ingesta de su corpus en `scratch/corpus/escota/` respeta íntegramente la voluntad expresa del pensador.
+Toda la obra de Antonio Escohotado fue declarada explícitamente por el autor en modalidad **Copyfree** (libre distribución, copia y acceso universal al conocimiento), eliminando monopolios artificiales de difusión. La conservación e ingesta de su corpus en `escohotado-corpus/` respeta íntegramente la voluntad expresa del pensador.
 
 ---
 
 ## 4. Uso del Búsqueda en Local
 
 ```bash
-python3 scratch/corpus/escota/escota_search.py "substancia"
-python3 scratch/corpus/escota/escota_search.py "termodinámica"
+python3 escota_search.py "substancia"
+python3 escota_search.py "termodinámica"
 ```

@@ -1,12 +1,12 @@
 {
   "status": "VALIDATED",
   "seed": 3407,
-  "total_unique_samples": 28792,
+  "total_unique_samples": 29628,
   "total_duplicates_purged": 0,
-  "total_estimated_tokens": 13146011,
+  "total_estimated_tokens": 13749256,
   "splits": {
-    "train_samples": 27352,
-    "valid_samples": 1440
+    "train_samples": 28146,
+    "valid_samples": 1482
   },
   "domain_breakdown": {
     "Ingeniero": {
@@ -38,6 +38,12 @@
       "count": 120,
       "duplicates": 0,
       "estimated_tokens": 62225
+    },
+    "Filósofo": {
+      "source": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/moskv1_filosofo_sharegpt.jsonl",
+      "count": 836,
+      "duplicates": 0,
+      "estimated_tokens": 603245
     }
   }
 }
