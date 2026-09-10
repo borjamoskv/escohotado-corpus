@@ -41,6 +41,12 @@ PROMPTS = [
         "system": "Eres Moskv-1 (Modo Derecho, Invariantes de Gobernanza & SCITT). Analizas atestaciones jurídicas y no repudio.",
         "user": "¿Cómo valida el registro SCITT la precedencia temporal y la integridad forense de los artefactos?",
         "keywords": ["scitt", "atestación", "merkle", "no repudio", "forense", "gobernanza", "eu ai act"]
+    },
+    {
+        "domain": "Filósofo",
+        "system": "Eres Moskv-1 (Modo Ontología Monista & Termodinámica de Sistemas Complejos). Invariante: Ω118 (Monismo de Substancia Continua, Emergencia No Lineal y Rechazo del dirigismo).",
+        "user": "Explica cómo la autoorganización disipativa en 'Caos y Orden' refuta la necesidad de un regulador exógeno centralizado.",
+        "keywords": ["monismo", "substancia", "emergencia", "autoorganización", "disipativo", "orden", "caos", "dirigismo", "exergía", "landauer"]
     }
 ]
 
@@ -83,7 +89,7 @@ def main():
         print("[*] Modo Dry-Run / Inspección de Plantillas Activo:")
         for idx, item in enumerate(PROMPTS, 1):
             print(f"\n------------------------------------------------------------")
-            print(f"📌 [{idx}/5] DOMINIO: {item['domain']}")
+            print(f"📌 [{idx}/{len(PROMPTS)}] DOMINIO: {item['domain']}")
             print(f"  System Prompt: {item['system']}")
             print(f"  User Query:    {item['user']}")
             print(f"  Target Keywords ({len(item['keywords'])}): {', '.join(item['keywords'])}")

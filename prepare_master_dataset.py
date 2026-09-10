@@ -33,6 +33,7 @@ REPORT_OUTPUT = BASE_DIR / "dataset_health_report.json"
 
 # Directorios candidatos a inspeccionar para encontrar los datasets de los dominios
 CANDIDATE_DIRS = [
+    BASE_DIR,
     Path("/Users/borjafernandezangulo/10_PROJECTS/20_VAULT/babylon60/lora_domains"),
     Path("/Users/borjafernandezangulo/10_PROJECTS/20_VAULT/wa-nexus/lora_swarm_ultimate_output"),
     Path("/Users/borjafernandezangulo/10_PROJECTS/20_VAULT/wa-nexus/lora_swarm_210iter_output"),
@@ -47,6 +48,7 @@ DOMAIN_FILES = [
     ("Médico", ["moskv1_medico_sharegpt.jsonl", "moskv1_7zone_medico_sharegpt.jsonl", "lora_medico.jsonl"]),
     ("Músico", ["moskv1_musico_sharegpt.jsonl", "moskv1_7zone_musico_sharegpt.jsonl", "lora_musico.jsonl"]),
     ("Abogado", ["moskv1_abogado_sharegpt.jsonl", "moskv1_7zone_abogado_sharegpt.jsonl", "lora_abogado.jsonl"]),
+    ("Filósofo", ["moskv1_filosofo_sharegpt.jsonl"]),
 ]
 
 def hash_record(record: dict) -> str:
@@ -76,75 +78,131 @@ def main():
     total_tokens = 0
     duplicate_count = 0
 
-    for domain_name, candidate_filenames in DOMAIN_FILES:
-        target_path = find_file(candidate_filenames)
-        if not target_path:
-            print(f"[!] Warning: No se encontró archivo para el dominio '{domain_name}'.")
-            domain_stats[domain_name] = {"count": 0, "duplicates": 0, "tokens": 0}
-            continue
+    legacy_domains = ["Ingeniero", "Físico", "Médico", "Músico", "Abogado"]
+    legacy_files_available = any(find_file(cand) is not None for d, cand in DOMAIN_FILES if d in legacy_domains)
 
-        domain_count = 0
-        domain_dup = 0
-        domain_tok = 0
+    if legacy_files_available:
+        for domain_name, candidate_filenames in DOMAIN_FILES:
+            target_path = find_file(candidate_filenames)
+            if not target_path:
+                print(f"[!] Warning: No se encontró archivo para el dominio '{domain_name}'.")
+                domain_stats[domain_name] = {"count": 0, "duplicates": 0, "tokens": 0}
+                continue
 
-        with open(target_path, "r", encoding="utf-8") as f:
-            for line_idx, line in enumerate(f, 1):
-                line = line.strip()
-                if not line:
-                    continue
-                try:
-                    data = json.loads(line)
-                    messages = data.get("messages")
-                    if not messages or not isinstance(messages, list):
+            domain_count = 0
+            domain_dup = 0
+            domain_tok = 0
+
+            with open(target_path, "r", encoding="utf-8") as f:
+                for line_idx, line in enumerate(f, 1):
+                    line = line.strip()
+                    if not line:
+                        continue
+                    try:
+                        data = json.loads(line)
+                        messages = data.get("messages")
+                        if not messages or not isinstance(messages, list):
+                            continue
+
+                        # Deduplicación SHA-256
+                        rec_hash = hash_record(data)
+                        if rec_hash in seen_hashes:
+                            duplicate_count += 1
+                            domain_dup += 1
+                            continue
+                        seen_hashes.add(rec_hash)
+
+                        # Cálculo de longitud y tokens
+                        record_text = " ".join(m.get("content", "") for m in messages)
+                        toks = estimate_tokens(record_text)
+                        domain_tok += toks
+                        total_tokens += toks
+
+                        data["_domain"] = domain_name
+                        master_records.append(data)
+                        domain_count += 1
+
+                    except json.JSONDecodeError:
                         continue
 
-                    # Deduplicación SHA-256
-                    rec_hash = hash_record(data)
-                    if rec_hash in seen_hashes:
-                        duplicate_count += 1
-                        domain_dup += 1
-                        continue
-                    seen_hashes.add(rec_hash)
-
-                    # Cálculo de longitud y tokens
-                    record_text = " ".join(m.get("content", "") for m in messages)
-                    toks = estimate_tokens(record_text)
-                    domain_tok += toks
-                    total_tokens += toks
-
-                    data["_domain"] = domain_name
-                    master_records.append(data)
-                    domain_count += 1
-
-                except json.JSONDecodeError:
-                    continue
-
-        domain_stats[domain_name] = {
-            "source": str(target_path),
-            "count": domain_count,
-            "duplicates": domain_dup,
-            "estimated_tokens": domain_tok
-        }
-        print(f"  ├─ [{domain_name}] ({target_path.name}) Muestras: {domain_count} | Duplicados: {domain_dup}")
-
-    # Fallback si no se encontró en dominios individuales: usar FALLBACK_MASTER
-    if len(master_records) == 0 and FALLBACK_MASTER.exists():
-        print(f"[*] Recurriendo a dataset maestro fallback: {FALLBACK_MASTER}")
-        with open(FALLBACK_MASTER, "r", encoding="utf-8") as f:
-            for line in f:
-                line = line.strip()
-                if not line:
-                    continue
+            domain_stats[domain_name] = {
+                "source": str(target_path),
+                "count": domain_count,
+                "duplicates": domain_dup,
+                "estimated_tokens": domain_tok
+            }
+            print(f"  ├─ [{domain_name}] ({target_path.name}) Muestras: {domain_count} | Duplicados: {domain_dup}")
+    else:
+        # Usar el master dataset consolidado como base para los 5 dominios legados
+        if MASTER_OUTPUT.exists():
+            print(f"[*] Base de datos local activa: Utilizando baseline multi-dominio de {MASTER_OUTPUT.name}")
+            if REPORT_OUTPUT.exists():
                 try:
-                    data = json.loads(line)
-                    if "messages" in data:
+                    with open(REPORT_OUTPUT, "r", encoding="utf-8") as rf:
+                        prev_rep = json.load(rf)
+                        for d_name, d_val in prev_rep.get("domain_breakdown", {}).items():
+                            if d_name != "Filósofo":
+                                domain_stats[d_name] = d_val
+                except Exception:
+                    pass
+
+            with open(MASTER_OUTPUT, "r", encoding="utf-8") as f:
+                for line in f:
+                    line = line.strip()
+                    if not line:
+                        continue
+                    try:
+                        data = json.loads(line)
+                        messages = data.get("messages")
+                        if not messages:
+                            continue
                         rec_hash = hash_record(data)
                         if rec_hash not in seen_hashes:
                             seen_hashes.add(rec_hash)
                             master_records.append(data)
-                            total_tokens += estimate_tokens(str(data["messages"]))
-                except json.JSONDecodeError:
-                    continue
+                            toks = estimate_tokens(" ".join(m.get("content", "") for m in messages))
+                            total_tokens += toks
+                    except json.JSONDecodeError:
+                        continue
+            print(f"  ├─ [Baseline Multi-Dominio] Muestras base cargadas: {len(master_records):,} | Tokens base: ~{total_tokens:,}")
+
+        # Ahora procesar el dominio Filósofo (Escohotado / C5-REAL)
+        filo_path = find_file(["moskv1_filosofo_sharegpt.jsonl"])
+        if filo_path:
+            filo_count = 0
+            filo_dup = 0
+            filo_tok = 0
+            with open(filo_path, "r", encoding="utf-8") as f:
+                for line in f:
+                    line = line.strip()
+                    if not line:
+                        continue
+                    try:
+                        data = json.loads(line)
+                        messages = data.get("messages")
+                        if not messages:
+                            continue
+                        rec_hash = hash_record(data)
+                        if rec_hash in seen_hashes:
+                            duplicate_count += 1
+                            filo_dup += 1
+                            continue
+                        seen_hashes.add(rec_hash)
+                        toks = estimate_tokens(" ".join(m.get("content", "") for m in messages))
+                        filo_tok += toks
+                        total_tokens += toks
+                        master_records.append({"messages": messages, "_domain": "Filósofo"})
+                        filo_count += 1
+                    except json.JSONDecodeError:
+                        continue
+
+            domain_stats["Filósofo"] = {
+                "source": str(filo_path),
+                "count": filo_count,
+                "duplicates": filo_dup,
+                "estimated_tokens": filo_tok
+            }
+            print(f"  ├─ [Filósofo] ({filo_path.name}) Muestras integradas: {filo_count} | Duplicados: {filo_dup} | Tokens: ~{filo_tok:,}")
 
     print(f"\n[*] Total Muestras Únicas: {len(master_records):,} | Duplicados Purgados: {duplicate_count:,}")
     print(f"[*] Tokens Estimados Totales: ~{total_tokens:,} tokens")

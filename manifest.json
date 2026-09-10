@@ -1,6 +1,6 @@
 {
   "repository": "Escota (Antonio Escohotado & C5-REAL) Multi-Domain Corpus",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "invariants": ["Ω118", "C5-REAL", "AASAD"],
   "works": [
     {
@@ -74,6 +74,159 @@
       "format": "MD",
       "category": "Seguridad & Inmunidad",
       "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/TRUST-SEMANTICS.md"
+    },
+    {
+      "id": "escohotado-formal-system",
+      "short_name": "formal_system_escohotado",
+      "title": "Sistema Formal Lógico-Deductivo G_ESCOTA",
+      "year": 2026,
+      "format": "MD",
+      "category": "Lógica Matemática & Axiomática",
+      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/FORMAL_SYSTEM_ESCOHOTADO.md"
+    },
+    {
+      "id": "c5-real-axioms",
+      "short_name": "axioms",
+      "title": "Axiomas Doctrinales CORTEX Persist (AX-I a AX-XII)",
+      "year": 2026,
+      "format": "MD",
+      "category": "Epistemología & Causalidad",
+      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/AXIOMS.md"
+    },
+    {
+      "id": "c5-real-cortex-capabilities",
+      "short_name": "cortex_capabilities",
+      "title": "Capacidades Nativas del Kernel CORTEX",
+      "year": 2026,
+      "format": "MD",
+      "category": "Arquitectura & Kernel",
+      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/CORTEX-CAPABILITIES.md"
+    },
+    {
+      "id": "c5-real-cortex-native-technologies",
+      "short_name": "cortex_native_technologies",
+      "title": "Tecnologías Nativas C5-REAL",
+      "year": 2026,
+      "format": "MD",
+      "category": "Tecnología & Bajo Nivel",
+      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/CORTEX-NATIVE-TECHNOLOGIES.md"
+    },
+    {
+      "id": "c5-real-cortex-architecture-whitepaper",
+      "short_name": "cortex_architecture_whitepaper",
+      "title": "Whitepaper de Arquitectura CORTEX",
+      "year": 2026,
+      "format": "MD",
+      "category": "Arquitectura de Sistemas",
+      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/CORTEX_ARCHITECTURE_WHITEPAPER.md"
+    },
+    {
+      "id": "c5-real-immunity-layer",
+      "short_name": "immunity_layer",
+      "title": "Capa de Inmunidad del Kernel",
+      "year": 2026,
+      "format": "MD",
+      "category": "Seguridad & Inmunidad",
+      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/IMMUNITY-LAYER.md"
+    },
+    {
+      "id": "c5-real-cognitive-sovereignty-architectures",
+      "short_name": "cognitive_sovereignty_architectures",
+      "title": "Arquitecturas de Soberanía Cognitiva",
+      "year": 2026,
+      "format": "MD",
+      "category": "Soberanía Cognitiva",
+      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/cognitive_sovereignty_architectures.md"
+    },
+    {
+      "id": "c5-real-comparativa-memoria-agentes-ia-2026",
+      "short_name": "comparativa_memoria_agentes_ia_2026",
+      "title": "Comparativa de Memoria para Agentes de IA 2026",
+      "year": 2026,
+      "format": "MD",
+      "category": "Memoria & Sistemas Agénticos",
+      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/comparativa-memoria-agentes-ia-2026.md"
+    },
+    {
+      "id": "c5-real-estado-publico-claims-y-limites",
+      "short_name": "estado_publico_claims_y_limites",
+      "title": "Estado Público: Claims y Límites",
+      "year": 2026,
+      "format": "MD",
+      "category": "Gobernanza & Límites",
+      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/estado-publico-claims-y-limites.md"
+    },
+    {
+      "id": "c5-real-peano-soberano",
+      "short_name": "peano_soberano",
+      "title": "Axiomática de Peano Soberana",
+      "year": 2026,
+      "format": "MD",
+      "category": "Fundamentación Matemática",
+      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/peano-soberano.md"
+    },
+    {
+      "id": "c5-real-por-que-los-agentes-autonomos-se-descontrolan",
+      "short_name": "por_que_los_agentes_autonomos_se_descontrolan",
+      "title": "¿Por qué los Agentes Autónomos se Descontrolan?",
+      "year": 2026,
+      "format": "MD",
+      "category": "Anergía & Control Cibernético",
+      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/por-que-los-agentes-autonomos-se-descontrolan.md"
+    },
+    {
+      "id": "c5-real-por-que-los-agentes-necesitan-memoria-con-evidencia",
+      "short_name": "por_que_los_agentes_necesitan_memoria_con_evidencia",
+      "title": "¿Por qué los Agentes Necesitan Memoria con Evidencia?",
+      "year": 2026,
+      "format": "MD",
+      "category": "Memoria Criptográfica",
+      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/por-que-los-agentes-necesitan-memoria-con-evidencia.md"
+    },
+    {
+      "id": "c5-real-que-es-un-agente-autonomo-de-verdad",
+      "short_name": "que_es_un_agente_autonomo_de_verdad",
+      "title": "¿Qué es un Agente Autónomo de Verdad?",
+      "year": 2026,
+      "format": "MD",
+      "category": "Teoría de Agentes",
+      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/que-es-un-agente-autonomo-de-verdad.md"
+    },
+    {
+      "id": "c5-real-teorias-fundamentales",
+      "short_name": "teorias_fundamentales",
+      "title": "Teorías Fundamentales C5-REAL",
+      "year": 2026,
+      "format": "MD",
+      "category": "Teoría & Fundamentos",
+      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/teorias_fundamentales.md"
+    },
+    {
+      "id": "c5-real-termodinamica-enjambres",
+      "short_name": "termodinamica_enjambres",
+      "title": "Termodinámica de Enjambres LLM",
+      "year": 2026,
+      "format": "MD",
+      "category": "Termodinámica & Enjambres",
+      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/termodinamica_enjambres.md"
+    },
+    {
+      "id": "c5-real-ultrathink-vs-deep-think-2026",
+      "short_name": "ultrathink_vs_deep_think_2026",
+      "title": "Ultrathink vs Deep Think 2026",
+      "year": 2026,
+      "format": "MD",
+      "category": "Física de Inferencia",
+      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/ultrathink-vs-deep-think-2026.md"
+    },
+    {
+      "id": "c5-real-why-ai-agents-need-deterministic-guardrails",
+      "short_name": "why_ai_agents_need_deterministic_guardrails",
+      "title": "¿Por qué los Agentes de IA Necesitan Barreras Deterministas?",
+      "year": 2026,
+      "format": "MD",
+      "category": "Seguridad Ring-0",
+      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/why-ai-agents-need-deterministic-guardrails.md"
     }
   ]
 }
