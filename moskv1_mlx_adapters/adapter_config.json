@@ -1,24 +1,24 @@
 {
     "adapter_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/moskv1_mlx_adapters",
-    "batch_size": 2,
+    "batch_size": 1,
     "clear_cache_threshold": 0,
     "config": null,
     "data": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/data_mlx",
     "fine_tune_type": "lora",
-    "grad_accumulation_steps": 1,
+    "grad_accumulation_steps": 2,
     "grad_checkpoint": true,
-    "iters": 500,
-    "learning_rate": 1e-05,
+    "iters": 50,
+    "learning_rate": 2e-05,
     "lora_parameters": {
         "rank": 8,
         "dropout": 0.0,
         "scale": 20.0
     },
     "lr_schedule": null,
-    "mask_prompt": false,
-    "max_seq_length": 2048,
+    "mask_prompt": true,
+    "max_seq_length": 800,
     "model": "mlx-community/Mistral-7B-Instruct-v0.3-4bit",
-    "num_layers": 16,
+    "num_layers": 8,
     "optimizer": "adam",
     "optimizer_config": {
         "adam": {},
@@ -30,12 +30,12 @@
     "project_name": null,
     "report_to": null,
     "resume_adapter_file": null,
-    "save_every": 100,
+    "save_every": 50,
     "seed": 0,
-    "steps_per_eval": 25,
-    "steps_per_report": 10,
+    "steps_per_eval": 500,
+    "steps_per_report": 5,
     "test": false,
     "test_batches": 500,
     "train": true,
-    "val_batches": 10
+    "val_batches": 1
 }

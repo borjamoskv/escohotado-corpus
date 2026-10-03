@@ -21,10 +21,12 @@ def parse_args():
     parser = argparse.ArgumentParser(description="MOSKV-1 MLX Fine-Tuning Engine (Apple Silicon Metal)")
     parser.add_argument("--model", type=str, default=DEFAULT_MODEL, help="ID o ruta del modelo base MLX")
     parser.add_argument("--data", type=str, default=str(DATA_DIR), help="Ruta al directorio con train.jsonl y valid.jsonl")
-    parser.add_argument("--iters", type=int, default=1000, help="Número total de iteraciones de entrenamiento")
-    parser.add_argument("--batch-size", type=int, default=2, help="Batch size por iteración de gradiente")
-    parser.add_argument("--learning-rate", type=float, default=1e-5, help="Tasa de aprendizaje (Learning Rate)")
-    parser.add_argument("--lora-layers", type=int, default=16, help="Número de capas transformadoras a adaptar")
+    parser.add_argument("--iters", type=int, default=50, help="Número total de iteraciones de entrenamiento")
+    parser.add_argument("--batch-size", type=int, default=1, help="Batch size por iteración de gradiente")
+    parser.add_argument("--grad-accum", type=int, default=2, help="Pasos de acumulación de gradiente")
+    parser.add_argument("--max-seq-length", type=int, default=800, help="Longitud máxima de secuencia en tokens")
+    parser.add_argument("--learning-rate", type=float, default=2e-5, help="Tasa de aprendizaje (Learning Rate)")
+    parser.add_argument("--lora-layers", type=int, default=8, help="Número de capas transformadoras a adaptar")
     parser.add_argument("--adapter-path", type=str, default=str(DEFAULT_ADAPTER_PATH), help="Directorio para guardar adaptadores LoRA")
     parser.add_argument("--fuse", action="store_true", help="Fusionar adaptadores con el modelo base al finalizar")
     return parser.parse_args()
@@ -33,16 +35,16 @@ def verify_dataset():
     train_p = DATA_DIR / "train.jsonl"
     valid_p = DATA_DIR / "valid.jsonl"
     if not train_p.exists() or not valid_p.exists() or train_p.stat().st_size == 0:
-        print("[!] Dataset MLX incompleto o no encontrado. Auto-ejecutando prepare_master_dataset.py...")
-        subprocess.run([sys.executable, str(BASE_DIR / "prepare_master_dataset.py")], check=True)
+        print("[!] Dataset MLX incompleto o no encontrado. Auto-ejecutando build_sovereign_dataset_v4.py...")
+        subprocess.run([sys.executable, str(BASE_DIR / "build_sovereign_dataset_v4.py")], check=True)
 
 def main():
     args = parse_args()
     print("=== [MOSKV-1 MLX Fine-Tuning Engine v2.0 — Apple Silicon Metal] ===")
     print(f"  ├─ Modelo Base: {args.model}")
     print(f"  ├─ Directorio Datos: {args.data}")
-    print(f"  ├─ Iteraciones: {args.iters} | Batch Size: {args.batch_size} | LR: {args.learning_rate}")
-    print(f"  └─ Adaptadores LoRA: {args.adapter_path} (Capas: {args.lora_layers})")
+    print(f"  ├─ Iteraciones: {args.iters} | Batch Size: {args.batch_size} (Accum: {args.grad_accum}) | LR: {args.learning_rate}")
+    print(f"  └─ Adaptadores LoRA: {args.adapter_path} (Capas: {args.lora_layers} | MaxSeq: {args.max_seq_length})")
 
     verify_dataset()
 
@@ -62,14 +64,18 @@ def main():
         "--data", str(args.data),
         "--train",
         "--batch-size", str(args.batch_size),
-        "--max-seq-length", "2048",
+        "--grad-accumulation-steps", str(args.grad_accum),
+        "--max-seq-length", str(args.max_seq_length),
         "--grad-checkpoint",
-        "--val-batches", "10",
-        "--steps-per-report", "10",
-        "--steps-per-eval", "25",
+        "--mask-prompt",
+        "--clear-cache-threshold", "0.5",
+        "--val-batches", "1",
+        "--steps-per-report", "5",
+        "--steps-per-eval", "500",
         "--num-layers", str(args.lora_layers),
         "--learning-rate", str(args.learning_rate),
         "--iters", str(args.iters),
+        "--save-every", "50",
         "--adapter-path", str(args.adapter_path)
     ]
 
