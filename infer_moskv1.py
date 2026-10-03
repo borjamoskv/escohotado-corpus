@@ -64,15 +64,15 @@ def evaluate_lexicon_density(text: str, keywords: list) -> float:
     matches = sum(1 for kw in keywords if kw.lower() in text_lower)
     return (matches / len(keywords)) * 100.0
 
-def run_mlx_inference(model_path: str, adapter_path: str, item: dict, temp: float, max_tokens: int):
+def run_mlx_inference(model, tokenizer, item: dict, temp: float, max_tokens: int):
     try:
-        from mlx_lm import load, generate
-        print(f"\n[*] Cargando modelo MLX: {model_path}...")
-        model, tokenizer = load(model_path, adapter_path=adapter_path)
-        
-        prompt = f"<|im_start|>system\n{item['system']}<|im_end|>\n<|im_start|>user\n{item['user']}<|im_end|>\n<|im_start|>assistant\n"
+        from mlx_lm import generate
+        from mlx_lm.sample_utils import make_sampler
+        messages = [{"role": "user", "content": f"{item['system']}\n\n{item['user']}"}]
+        prompt = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+        sampler = make_sampler(temp=temp)
         start_t = time.time()
-        response = generate(model, tokenizer, prompt=prompt, max_tokens=max_tokens, verbose=False)
+        response = generate(model, tokenizer, prompt=prompt, max_tokens=max_tokens, sampler=sampler, verbose=False)
         elapsed = time.time() - start_t
         
         density = evaluate_lexicon_density(response, item['keywords'])
@@ -98,6 +98,10 @@ def main():
         return
 
     print(f"[*] Modo Inferencia En Caliente | Modelo: {args.model} | Adaptador: {args.adapter_path}")
+    from mlx_lm import load
+    print(f"[*] Cargando modelo y adaptadores en memoria unificada Metal...")
+    model, tokenizer = load(args.model, adapter_path=args.adapter_path)
+    print(f"[✓] Modelo cargado con éxito. Iniciando benchmark multi-dominio.")
     
     results = []
     for item in PROMPTS:
@@ -105,7 +109,7 @@ def main():
         print(f"🚀 Generando para Dominio: {item['domain']}")
         print(f"============================================================")
         
-        response, elapsed, density = run_mlx_inference(args.model, args.adapter_path, item, args.temp, args.max_tokens)
+        response, elapsed, density = run_mlx_inference(model, tokenizer, item, args.temp, args.max_tokens)
         if response:
             print(f"\n--- RESPUESTA GENERADA ({elapsed:.2f}s) ---")
             print(response.strip())
