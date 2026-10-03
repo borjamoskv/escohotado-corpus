@@ -16,7 +16,7 @@
     },
     "lr_schedule": null,
     "mask_prompt": true,
-    "max_seq_length": 800,
+    "max_seq_length": 600,
     "model": "mlx-community/Mistral-7B-Instruct-v0.3-4bit",
     "num_layers": 8,
     "optimizer": "adam",

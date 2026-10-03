@@ -11,40 +11,42 @@ import sys
 import time
 from pathlib import Path
 
+INV_POSTFIX = " Invariante: Cero adjetivos calificativos, cero peloteo, cero adverbios en -mente. Sintaxis: [Sujeto] → [Verbo] → [Objeto]."
+
 PROMPTS = [
     {
         "domain": "Ingeniero",
-        "system": "Eres Moskv-1 (Modo Ingeniería de Software & C++20/Rust). Invariante: Cero-Anergía y exergía máxima.",
+        "system": "Eres Moskv-1 (Modo Ingeniería de Software & C++20/Rust)." + INV_POSTFIX,
         "user": "Explica la garantía de atómica del Sequencer Lock-Free SPSC y el Invariante CALM II'.",
         "keywords": ["lock-free", "spsc", "atomic", "calm", "ring buffer", "memoria", "exergía"]
     },
     {
         "domain": "Físico",
-        "system": "Eres Moskv-1 (Modo Física & Termodinámica). Analizas el sistema mediante mecánica estadística y cotas de Landauer.",
+        "system": "Eres Moskv-1 (Modo Física & Termodinámica)." + INV_POSTFIX,
         "user": "¿Cómo afecta el borrado de información de 1 bit al consumo termodinámico mínimo (kT ln 2)?",
         "keywords": ["landauer", "entropía", "kt ln 2", "información", "termodinámica", "disipación"]
     },
     {
         "domain": "Médico",
-        "system": "Eres Moskv-1 (Modo Fisiología & Neurociencia). Analizas mediante homeostosis de redes neuronales y bioenergética.",
+        "system": "Eres Moskv-1 (Modo Fisiología & Neurociencia)." + INV_POSTFIX,
         "user": "Describe la modulación neurotransmisora de la dopamina en circuitos estriatales.",
         "keywords": ["dopamina", "estriado", "neurotransmisor", "sinapsis", "receptores d1/d2", "circuito"]
     },
     {
         "domain": "Músico",
-        "system": "Eres Moskv-1 (Modo Teoría Musical & Acústica Físico-Matemática). Analizas análisis espectral y armónicos.",
+        "system": "Eres Moskv-1 (Modo Teoría Musical & Acústica Físico-Matemática)." + INV_POSTFIX,
         "user": "Analiza la afinación temperada vs justa a través de las proporciones de frecuencia pitagóricas.",
         "keywords": ["frecuencia", "temperada", "pitagórica", "armónicos", "quintas", "acústica"]
     },
     {
         "domain": "Abogado",
-        "system": "Eres Moskv-1 (Modo Derecho, Invariantes de Gobernanza & SCITT). Analizas atestaciones jurídicas y no repudio.",
+        "system": "Eres Moskv-1 (Modo Derecho, Invariantes de Gobernanza & SCITT)." + INV_POSTFIX,
         "user": "¿Cómo valida el registro SCITT la precedencia temporal y la integridad forense de los artefactos?",
         "keywords": ["scitt", "atestación", "merkle", "no repudio", "forense", "gobernanza", "eu ai act"]
     },
     {
         "domain": "Filósofo",
-        "system": "Eres Moskv-1 (Modo Ontología Monista & Termodinámica de Sistemas Complejos). Invariante: Ω118 (Monismo de Substancia Continua, Emergencia No Lineal y Rechazo del dirigismo).",
+        "system": "Eres Moskv-1 (Modo Ontología Monista & Termodinámica de Sistemas Complejos). Invariante Ω118: Monismo de substancia continua, emergencia y autoorganización disipativa." + INV_POSTFIX,
         "user": "Explica cómo la autoorganización disipativa en 'Caos y Orden' refuta la necesidad de un regulador exógeno centralizado.",
         "keywords": ["monismo", "substancia", "emergencia", "autoorganización", "disipativo", "orden", "caos", "dirigismo", "exergía", "landauer"]
     }
@@ -63,6 +65,16 @@ def evaluate_lexicon_density(text: str, keywords: list) -> float:
     text_lower = text.lower()
     matches = sum(1 for kw in keywords if kw.lower() in text_lower)
     return (matches / len(keywords)) * 100.0
+
+def audit_grammatical_invariants(text: str):
+    import re
+    mentes = re.findall(r'\b\w+mente\b', text, re.IGNORECASE)
+    peloteo_pats = [r'excelente', r'maravilloso', r'fascinante', r'por supuesto', r'claro que s[ií]', r'como bien']
+    peloteos = []
+    for p in peloteo_pats:
+        if re.search(p, text, re.IGNORECASE):
+            peloteos.append(p)
+    return mentes, peloteos
 
 def run_mlx_inference(model, tokenizer, item: dict, temp: float, max_tokens: int):
     try:
@@ -113,16 +125,20 @@ def main():
         if response:
             print(f"\n--- RESPUESTA GENERADA ({elapsed:.2f}s) ---")
             print(response.strip())
+            mentes, peloteos = audit_grammatical_invariants(response)
             print(f"\n📊 Densidad de Léxico C5-REAL: {density:.1f}%")
+            print(f"🛡️  Auditoría Gramatical: Mentes={len(mentes)} {mentes} | Peloteos={len(peloteos)} {peloteos}")
             results.append({
                 "domain": item["domain"],
                 "elapsed_sec": round(elapsed, 2),
-                "lexicon_density_pct": round(density, 1)
+                "lexicon_density_pct": round(density, 1),
+                "mentes_count": len(mentes),
+                "peloteo_count": len(peloteos)
             })
 
     print("\n=== RESUMEN DE EVALUACIÓN MULTI-DOMINIO ===")
     for r in results:
-        print(f"  └─ {r['domain']}: {r['elapsed_sec']}s | Densidad Léxico: {r['lexicon_density_pct']}%")
+        print(f"  └─ {r['domain']}: {r['elapsed_sec']}s | Léxico: {r['lexicon_density_pct']}% | Mentes: {r['mentes_count']} | Peloteo: {r['peloteo_count']}")
 
 if __name__ == "__main__":
     main()
