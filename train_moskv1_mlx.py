@@ -35,8 +35,8 @@ def verify_dataset():
     train_p = DATA_DIR / "train.jsonl"
     valid_p = DATA_DIR / "valid.jsonl"
     if not train_p.exists() or not valid_p.exists() or train_p.stat().st_size == 0:
-        print("[!] Dataset MLX incompleto o no encontrado. Auto-ejecutando build_sovereign_dataset_v4.py...")
-        subprocess.run([sys.executable, str(BASE_DIR / "build_sovereign_dataset_v4.py")], check=True)
+        print("[!] Dataset MLX incompleto o no encontrado. Auto-ejecutando build_sovereign_dataset_v5.py...")
+        subprocess.run([sys.executable, str(BASE_DIR / "build_sovereign_dataset_v5.py")], check=True)
 
 def main():
     args = parse_args()
@@ -65,10 +65,10 @@ def main():
         "--train",
         "--batch-size", str(args.batch_size),
         "--grad-accumulation-steps", str(args.grad_accum),
-        "--max-seq-length", str(args.max_seq_length),
+        "--max-seq-length", "600",
         "--grad-checkpoint",
         "--mask-prompt",
-        "--clear-cache-threshold", "0.5",
+        "--clear-cache-threshold", "0.3",
         "--val-batches", "1",
         "--steps-per-report", "5",
         "--steps-per-eval", "500",
