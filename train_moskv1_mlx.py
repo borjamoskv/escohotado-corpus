@@ -59,9 +59,9 @@ def main():
     cmd = [
         "python3", "-m", "mlx_lm", "lora",
         "--model", args.model,
-        "--data", "data_mlx",
+        "--data", str(args.data),
         "--train",
-        "--batch-size", "1",
+        "--batch-size", str(args.batch_size),
         "--max-seq-length", "2048",
         "--grad-checkpoint",
         "--val-batches", "10",
@@ -70,7 +70,7 @@ def main():
         "--num-layers", str(args.lora_layers),
         "--learning-rate", str(args.learning_rate),
         "--iters", str(args.iters),
-        "--adapter-path", args.adapter_path
+        "--adapter-path", str(args.adapter_path)
     ]
 
     print(f"\n[*] Lanzando comando de entrenamiento LoRA...")
