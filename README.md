@@ -1,19 +1,34 @@
 <!-- C5-REAL EXERGY CERTIFIED -->
 # 🏛️ Repositorio Especial Antonio Escohotado ("Escota") & C5-REAL Corpus
 
+> **29,628-Sample SHA-256 Deduplicated Fine-Tuning Corpus, Merkle Attestation Tree & Tripartite Ontology Engine ($\Omega 118$) on Antonio Escohotado.**
+
+[![CI Pipeline](https://img.shields.io/badge/CI_Workflow-SHA256_Verified-brightgreen?style=for-the-badge)](https://github.com/borjamoskv/escohotado-corpus/actions)
+[![License: Copyfree / MIT](https://img.shields.io/badge/License-Copyfree_%2F_MIT-blue?style=for-the-badge)](./LICENSE)
 ![Exergy Status](https://img.shields.io/badge/Exergy-100%25_PURE-87A78E?style=for-the-badge)
 ![Invariante](https://img.shields.io/badge/Invariante-%CE%A9118_MONISMO-8B9FD4?style=for-the-badge)
 ![Swarm Architecture](https://img.shields.io/badge/Swarm-21_AGENTES_PxS-C4B4E0?style=for-the-badge)
-![Deduplicacion](https://img.shields.io/badge/Deduplicacion-BIT--PERFECT_SHA256-F4A683?style=for-the-badge)
 
 > [!IMPORTANT]
 > **Invariante Tripartito Ω118:** Este repositorio constituye el motor ontológico y la base de datos de entrenamiento fine-tuning para el modelo **Moskv-1**. Todo procesamiento se realiza bajo el monismo de substancia continua, autoorganización disipativa y rechazo del dirigismo.
 
 ---
 
+## ⚡ Quickstart & Installation
+
+Verifica las métricas del dataset consolidado, la deduplicación bit-perfecta SHA-256 y la raíz de Merkle en un comando:
+
+```bash
+python3 moskv1_pipeline.py status
+python3 escota_search.py "termodinamica"
+python3 audit_21_swarm_dataset.py
+```
+
+---
+
 ## ⚙️ 1. Metrología del Dataset Consolidado (`moskv1_filosofo_sharegpt.jsonl`)
 
-```
+```text
 ┌──────────────────────────────────────────────────────────┐
 │  Métrica                             Valor Verificado    │
 ├──────────────────────────────────────────────────────────┤
@@ -33,22 +48,19 @@
 
 ---
 
-## 🚀 2. Arquitectura de Minería y Colapso Epistémico (21 Agentes)
+## 🚀 2. Architecture & Epistemic Mining Pipeline (21 Agentes)
 
 ```mermaid
-graph TD
-    A["25 Fuentes Documentales<br/>(Escohotado + C5-REAL Papers)"] --> B["ENJAMBRE DE 21 AGENTES (PxS)<br/>(swarm_miner.py 21)"]
-    B --> C["DEDUPLICACIÓN BIT-PERFECT<br/>(SHA-256 Hash Matching)"]
-    C --> D["CADENA DE CUSTODIA<br/>(Merkle Tree SHA-256)"]
-    D --> E["DATASET FILÓSOFO CHATML<br/>(moskv1_filosofo_sharegpt.jsonl)"]
-    E --> F["DATASET MAESTRO MOSKV-1 (6 DOMINIOS)<br/>(29,628 muestras / ~13.75M tokens)"]
+flowchart TD
+    classDef src fill:#1e293b,stroke:#38bdf8,stroke-width:2px,color:#f8fafc
+    classDef verify fill:#064e3b,stroke:#34d399,stroke-width:2px,color:#f8fafc
+    classDef out fill:#450a0a,stroke:#f87171,stroke-width:2px,color:#f8fafc
 
-    style A fill:#87A78E,color:#fff
-    style B fill:#8B9FD4,color:#fff
-    style C fill:#C4B4E0,color:#fff
-    style D fill:#F4A683,color:#fff
-    style E fill:#87A78E,color:#fff
-    style F fill:#8B9FD4,color:#fff
+    A["25 Fuentes Documentales<br/>(Escohotado + C5-REAL Papers)"]:::src --> B["ENJAMBRE DE 21 AGENTES (PxS)<br/>(swarm_miner.py 21)"]:::src
+    B --> C["DEDUPLICACIÓN BIT-PERFECT<br/>(SHA-256 Hash Matching)"]:::verify
+    C --> D["CADENA DE CUSTODIA<br/>(Merkle Tree SHA-256)"]:::verify
+    D --> E["DATASET FILÓSOFO CHATML<br/>(moskv1_filosofo_sharegpt.jsonl)"]:::out
+    E --> F["DATASET MAESTRO MOSKV-1 (6 DOMINIOS)<br/>(29,628 muestras / ~13.75M tokens)"]:::out
 ```
 
 ---
@@ -98,10 +110,10 @@ graph TD
 ## 🔗 5. Enlaces e Integración en la Arquitectura C5-REAL
 
 El corpus Escohotado está directamente integrado en los motores del proyecto:
-- **Especificación de Invariantes:** [`escohotado_tripartite_invariant.yaml`](file:///Users/borjafernandezangulo/10_PROJECTS/Teorema-Robinson-Moskv/docs/ontology/escohotado_tripartite_invariant.yaml)
-- **Motor de Sustancia Continua:** [`escohotado_substance_ontology.py`](file:///Users/borjafernandezangulo/10_PROJECTS/Teorema-Robinson-Moskv/src/cortex-engine/cortex-persist/cortex_python/core/escohotado_substance_ontology.py)
-- **Motor de Caos y Complejidad:** [`escohotado_chaos_engine.py`](file:///Users/borjafernandezangulo/10_PROJECTS/Teorema-Robinson-Moskv/src/cortex-engine/cortex-persist/cortex_python/engines/escohotado_chaos_engine.py)
-- **CLI Ontológico:** [`escohotado_cli.py`](file:///Users/borjafernandezangulo/10_PROJECTS/Teorema-Robinson-Moskv/src/cortex-engine/cortex-persist/cortex_python/core/escohotado_cli.py)
+- **Especificación de Invariantes:** `escohotado_tripartite_invariant.yaml`
+- **Motor de Sustancia Continua:** `escohotado_substance_ontology.py`
+- **Motor de Caos y Complejidad:** `escohotado_chaos_engine.py`
+- **CLI Ontológico:** `escohotado_cli.py`
 
 ---
 
@@ -126,22 +138,9 @@ python3 moskv1_pipeline.py train-mlx --model mlx-community/Mistral-7B-Instruct-v
 python3 moskv1_pipeline.py train-unsloth --model-name unsloth/Mistral-7B-Instruct-v0.3-bnb-4bit --export-gguf q4_k_m
 ```
 
-### Herramientas Heredadas
-```bash
-# Minería paralela con enjambre de 21 agentes autónomos
-python3 swarm_miner.py 21
-
-# Búsqueda epistémica insensible a acentos sobre las fuentes
-python3 escota_search.py "termodinamica"
-
-# Auditoría metrológica de dataset y cálculo de Merkle Root
-python3 audit_21_swarm_dataset.py
-```
-
 ---
 
-## 📜 7. Licenciamiento "Copyfree"
+## 📜 7. License & Security ("Copyfree" & MIT)
 
 > [!NOTE]
-> Toda la obra de Antonio Escohotado fue declarada explícitamente por el autor en modalidad **Copyfree** (libre distribución, copia y acceso universal al conocimiento), eliminando monopolios artificiales de difusión. La conservación e ingesta de su corpus en `escohotado-corpus/` respeta íntegramente la voluntad expresa del pensador.
-
+> Toda la obra de Antonio Escohotado fue declarada explícitamente por el autor en modalidad **Copyfree** (libre distribución, copia y acceso universal al conocimiento), eliminando monopolios artificiales de difusión. La conservación e ingesta de su corpus en `escohotado-corpus/` respeta íntegramente la voluntad expresa del pensador. El código de minería y verificación se distribuye bajo licencia **MIT** (`LICENSE`), con políticas de integridad criptográfica documentadas en `SECURITY.md` y `CONTRIBUTING.md`.
