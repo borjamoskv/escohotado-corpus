@@ -24,10 +24,11 @@ def parse_args():
     parser.add_argument("--iters", type=int, default=50, help="Número total de iteraciones de entrenamiento")
     parser.add_argument("--batch-size", type=int, default=1, help="Batch size por iteración de gradiente")
     parser.add_argument("--grad-accum", type=int, default=2, help="Pasos de acumulación de gradiente")
-    parser.add_argument("--max-seq-length", type=int, default=800, help="Longitud máxima de secuencia en tokens")
-    parser.add_argument("--learning-rate", type=float, default=2e-5, help="Tasa de aprendizaje (Learning Rate)")
-    parser.add_argument("--lora-layers", type=int, default=8, help="Número de capas transformadoras a adaptar")
+    parser.add_argument("--max-seq-length", type=int, default=384, help="Longitud máxima de secuencia en tokens")
+    parser.add_argument("--learning-rate", type=float, default=2.5e-5, help="Tasa de aprendizaje (Learning Rate)")
+    parser.add_argument("--lora-layers", type=int, default=4, help="Número de capas transformadoras a adaptar")
     parser.add_argument("--adapter-path", type=str, default=str(DEFAULT_ADAPTER_PATH), help="Directorio para guardar adaptadores LoRA")
+    parser.add_argument("--resume", action="store_true", help="Reanudar desde adapters.safetensors existentes en adapter-path")
     parser.add_argument("--fuse", action="store_true", help="Fusionar adaptadores con el modelo base al finalizar")
     return parser.parse_args()
 
@@ -35,8 +36,8 @@ def verify_dataset():
     train_p = DATA_DIR / "train.jsonl"
     valid_p = DATA_DIR / "valid.jsonl"
     if not train_p.exists() or not valid_p.exists() or train_p.stat().st_size == 0:
-        print("[!] Dataset MLX incompleto o no encontrado. Auto-ejecutando build_sovereign_dataset_v5.py...")
-        subprocess.run([sys.executable, str(BASE_DIR / "build_sovereign_dataset_v5.py")], check=True)
+        print("[!] Dataset MLX incompleto o no encontrado. Auto-ejecutando build_sovereign_dataset_v6.py...")
+        subprocess.run([sys.executable, str(BASE_DIR / "build_sovereign_dataset_v6.py")], check=True)
 
 def main():
     args = parse_args()
@@ -65,19 +66,23 @@ def main():
         "--train",
         "--batch-size", str(args.batch_size),
         "--grad-accumulation-steps", str(args.grad_accum),
-        "--max-seq-length", "600",
+        "--max-seq-length", str(args.max_seq_length),
         "--grad-checkpoint",
         "--mask-prompt",
-        "--clear-cache-threshold", "0.3",
         "--val-batches", "1",
         "--steps-per-report", "5",
         "--steps-per-eval", "500",
         "--num-layers", str(args.lora_layers),
         "--learning-rate", str(args.learning_rate),
         "--iters", str(args.iters),
-        "--save-every", "50",
+        "--save-every", str(args.iters),
         "--adapter-path", str(args.adapter_path)
     ]
+
+    if args.resume:
+        resume_ckpt = str(Path(args.adapter_path) / "adapters.safetensors")
+        cmd += ["--resume-adapter-file", resume_ckpt]
+        print(f"[*] Reanudando desde checkpoint: {resume_ckpt}")
 
     print(f"\n[*] Lanzando comando de entrenamiento LoRA...")
     print(f"    $ {' '.join(cmd)}\n")
