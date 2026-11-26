@@ -7,12 +7,12 @@
 # ==============================================================================
 
 import argparse
-import os
 import sys
 import subprocess
 from pathlib import Path
+from corpus_quality import audit
 
-BASE_DIR = Path("/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus")
+BASE_DIR = Path(__file__).resolve().parent
 DATA_DIR = BASE_DIR / "data_mlx"
 DEFAULT_MODEL = "mlx-community/Mistral-7B-Instruct-v0.3-4bit"
 DEFAULT_ADAPTER_PATH = BASE_DIR / "moskv1_mlx_adapters"
@@ -20,7 +20,8 @@ DEFAULT_ADAPTER_PATH = BASE_DIR / "moskv1_mlx_adapters"
 def parse_args():
     parser = argparse.ArgumentParser(description="MOSKV-1 MLX Fine-Tuning Engine (Apple Silicon Metal)")
     parser.add_argument("--model", type=str, default=DEFAULT_MODEL, help="ID o ruta del modelo base MLX")
-    parser.add_argument("--data", type=str, default=str(DATA_DIR), help="Ruta al directorio con train.jsonl y valid.jsonl")
+    parser.add_argument("--data", type=str, default=str(DATA_DIR), help="Ruta al directorio con train.jsonl, valid.jsonl y review.jsonl")
+    parser.add_argument("--source-root", type=Path, default=BASE_DIR, help="Root of reviewed evidence files")
     parser.add_argument("--iters", type=int, default=50, help="Número total de iteraciones de entrenamiento")
     parser.add_argument("--batch-size", type=int, default=1, help="Batch size por iteración de gradiente")
     parser.add_argument("--grad-accum", type=int, default=2, help="Pasos de acumulación de gradiente")
@@ -32,12 +33,14 @@ def parse_args():
     parser.add_argument("--fuse", action="store_true", help="Fusionar adaptadores con el modelo base al finalizar")
     return parser.parse_args()
 
-def verify_dataset():
-    train_p = DATA_DIR / "train.jsonl"
-    valid_p = DATA_DIR / "valid.jsonl"
-    if not train_p.exists() or not valid_p.exists() or train_p.stat().st_size == 0:
-        print("[!] Dataset MLX incompleto o no encontrado. Auto-ejecutando build_sovereign_dataset_v6.py...")
-        subprocess.run([sys.executable, str(BASE_DIR / "build_sovereign_dataset_v6.py")], check=True)
+def verify_dataset(data_dir, source_root):
+    """Refuse training on unreviewed or contaminated data; never rebuild silently."""
+    report = audit(Path(data_dir), source_root)
+    if not report["gate_passed"]:
+        print("[!] Dataset quality gate failed: " + ", ".join(report["gate_failures"]), file=sys.stderr)
+        print("Run corpus_quality.py --data <directory> --gate for details.", file=sys.stderr)
+        raise SystemExit(1)
+
 
 def main():
     args = parse_args()
@@ -47,7 +50,7 @@ def main():
     print(f"  ├─ Iteraciones: {args.iters} | Batch Size: {args.batch_size} (Accum: {args.grad_accum}) | LR: {args.learning_rate}")
     print(f"  └─ Adaptadores LoRA: {args.adapter_path} (Capas: {args.lora_layers} | MaxSeq: {args.max_seq_length})")
 
-    verify_dataset()
+    verify_dataset(args.data, args.source_root)
 
     # Verificar si mlx_lm está disponible
     try:
@@ -60,7 +63,7 @@ def main():
         sys.exit(1)
 
     cmd = [
-        "python3", "-m", "mlx_lm", "lora",
+        sys.executable, "-m", "mlx_lm", "lora",
         "--model", args.model,
         "--data", str(args.data),
         "--train",
