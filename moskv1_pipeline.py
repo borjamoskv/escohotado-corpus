@@ -11,7 +11,7 @@ import sys
 import subprocess
 from pathlib import Path
 
-BASE_DIR = Path("/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus")
+BASE_DIR = Path(__file__).resolve().parent
 
 def cmd_prepare(args):
     print("=== [MOSKV-1 Pipeline: Preparación & Sanitización de Datasets] ===")
@@ -69,7 +69,7 @@ def cmd_status(args):
     print(f"  ├─ Modelo Fused MLX         : {fused_f} [{fmt_size(fused_f)}]")
 
     if report_f.exists():
-        print(f"\n--- REPORTE DE SALUD DEL DATASET ({report_f.name}) ---")
+        print(f"\n--- REPORTE HISTÓRICO (no verificado en tiempo real): {report_f.name} ---")
         try:
             with open(report_f, "r", encoding="utf-8") as f:
                 data = json.load(f)

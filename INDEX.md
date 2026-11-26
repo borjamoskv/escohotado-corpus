@@ -1,41 +1,35 @@
-<!-- C5-REAL EXERGY CERTIFIED -->
-# Repositorio Especial Antonio Escohotado ("Escota")
+# Índice documental ESCOTA
 
-Este directorio constituye la colección documental y ontológica especializada de la obra completa, textos y modelos formales de **Antonio Escohotado (Escota)** dentro del marco **C5-REAL / Teorema Robinson-Moskv**.
+Colección mixta de OCR atribuidos a Antonio Escohotado, interpretaciones del proyecto y documentación técnica C5-REAL/MOSKV-1. No es una edición crítica ni un inventario de la obra completa.
 
----
+## Catálogo
 
-## 1. Estructura del Repositorio
+El [manifiesto](manifest.json) es el inventario legible por máquina. Cada entrada distingue tipo documental, ruta relativa, identificador de bytes Git y estado de derechos.
 
-- `texts/`: Almacenamiento en texto plano sin sobrecoste (formatos OCR `DjVuTXT` / `hOCR`).
-- `manifest.json`: Índice estructurado de obras, hashes, URLs de Internet Archive e identificadores.
-- `escota_search.py`: Motor de búsqueda y consulta ontológica por comandos sobre el corpus en local.
-- Integración ontológica existente en el proyecto:
-  - Definición YAML: [escohotado_tripartite_invariant.yaml](file:///Users/borjafernandezangulo/10_PROJECTS/Teorema-Robinson-Moskv/docs/ontology/escohotado_tripartite_invariant.yaml)
-  - Motor de Sustancia: [escohotado_substance_ontology.py](file:///Users/borjafernandezangulo/10_PROJECTS/Teorema-Robinson-Moskv/src/cortex-engine/cortex-persist/cortex_python/core/escohotado_substance_ontology.py)
-  - Motor de Caos y Complejidad: [escohotado_chaos_engine.py](file:///Users/borjafernandezangulo/10_PROJECTS/Teorema-Robinson-Moskv/src/cortex-engine/cortex-persist/cortex_python/engines/escohotado_chaos_engine.py)
-  - CLI: [escohotado_cli.py](file:///Users/borjafernandezangulo/10_PROJECTS/Teorema-Robinson-Moskv/src/cortex-engine/cortex-persist/cortex_python/core/escohotado_cli.py)
+| Capa | Documentos |
+| --- | ---: |
+| OCR atribuido a Escohotado | 2 |
+| Interpretaciones y formalizaciones | 5 |
+| Documentación técnica del proyecto | 18 |
 
----
+Los dos OCR son *Realidad y Substancia* y *Caos y Orden*. Los materiales relativos a *Los enemigos del comercio*, *Historia general de las drogas* y *Somos información, somos bytes* son análisis derivados, no ediciones completas de esas obras.
 
-## 2. Invariante Tripartito Escohotadiano (Ω118)
-
-Toda auditoría y evaluación de sistemas dinámicos en el proyecto sigue el Invariante Ω118:
-1. **Monismo de Sustancia Continua**: Superación del dualismo sujeto-objeto (*Realidad y Substancia*, 1985).
-2. **Emergencia No Lineal sin Diseñador Exógeno**: Autogestión de la complejidad (*Caos y Orden*, 1999).
-3. **Inviolabilidad de las Señales de Precio e Intercambio Libre**: Rechazo del dirigismo burocrático (*Los Enemigos del Comercio* / *Las Drogas*).
-
----
-
-## 3. Principio de Licenciamiento "Copyfree"
-
-Toda la obra de Antonio Escohotado fue declarada explícitamente por el autor en modalidad **Copyfree** (libre distribución, copia y acceso universal al conocimiento), eliminando monopolios artificiales de difusión. La conservación e ingesta de su corpus en `escohotado-corpus/` respeta íntegramente la voluntad expresa del pensador.
-
----
-
-## 4. Uso del Búsqueda en Local
+## Consulta local
 
 ```bash
-python3 escota_search.py "substancia"
-python3 escota_search.py "termodinámica"
+python3 escota_search.py --check-catalog
+python3 escota_search.py "substancia" --kind primary_ocr --json
+python3 escota_search.py "termodinámica" --kind interpretation
 ```
+
+Las referencias de línea son posiciones del OCR local, no paginación editorial. El SHA-256 identifica el archivo consultado. La atribución y edición requieren comprobación documental independiente.
+
+## Marco Ω118
+
+Monismo de substancia, emergencia no lineal e intercambio libre constituyen una lectura propia de C5-REAL inspirada en Escohotado. No se presentan como axiomas del autor ni como verificación formal.
+
+Los nombres `escohotado_tripartite_invariant.yaml`, `escohotado_substance_ontology.py`, `escohotado_chaos_engine.py` y `escohotado_cli.py` corresponden a integraciones externas no incluidas en este árbol; no hay enlaces locales portables a ellas.
+
+## Derechos
+
+El [README](README.md#licencia-y-procedencia) delimita licencia del código, procedencia y derechos de terceros. Los campos desconocidos no se completan por inferencia.

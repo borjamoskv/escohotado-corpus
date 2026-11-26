@@ -1,7 +1,11 @@
 {
   "repository": "Escota (Antonio Escohotado & C5-REAL) Multi-Domain Corpus",
-  "version": "2.6.0",
-  "invariants": ["Ω118", "C5-REAL", "AASAD"],
+  "version": "3.0.0",
+  "invariants": [
+    "Ω118",
+    "C5-REAL",
+    "AASAD"
+  ],
   "works": [
     {
       "id": "escohotado-realidad-y-substancia",
@@ -10,7 +14,13 @@
       "year": 1985,
       "format": "TXT",
       "category": "Ontología & Metafísica",
-      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/realidad_y_substancia_djvu.txt"
+      "local_path": "texts/realidad_y_substancia_djvu.txt",
+      "kind": "primary_ocr",
+      "git_blob_sha1": "211fb636c1f728e812fd837aa418a90566145370",
+      "source_url": null,
+      "edition": null,
+      "rights_status": "unverified",
+      "attribution": "Antonio Escohotado (attributed OCR; edition unverified)"
     },
     {
       "id": "escohotado-caos-y-orden",
@@ -19,7 +29,13 @@
       "year": 1999,
       "format": "TXT",
       "category": "Física & Sistemas Complejos",
-      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/caos_y_orden_djvu.txt"
+      "local_path": "texts/caos_y_orden_djvu.txt",
+      "kind": "primary_ocr",
+      "git_blob_sha1": "ee6f2b5b099ac0db85b99e86325579f88d03edd9",
+      "source_url": null,
+      "edition": null,
+      "rights_status": "unverified",
+      "attribution": "Antonio Escohotado (attributed OCR; edition unverified)"
     },
     {
       "id": "escohotado-enemigos-del-comercio-ing-inv",
@@ -28,7 +44,13 @@
       "year": 2026,
       "format": "MD",
       "category": "Praxeología & Economía",
-      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/ingenieria_inversa_enemigos_del_comercio_escohotado.md"
+      "local_path": "texts/ingenieria_inversa_enemigos_del_comercio_escohotado.md",
+      "kind": "interpretation",
+      "git_blob_sha1": "f3f1e307fa9b41f0a19f55ba9bf43983e3728fb3",
+      "source_url": null,
+      "edition": null,
+      "rights_status": "unverified",
+      "attribution": "Project material (authorship not independently verified)"
     },
     {
       "id": "escohotado-historia-drogas-ing-inv",
@@ -37,7 +59,13 @@
       "year": 2026,
       "format": "MD",
       "category": "Soberanía Cognitiva & Autonomía",
-      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/ingenieria_inversa_historia_drogas_escohotado.md"
+      "local_path": "texts/ingenieria_inversa_historia_drogas_escohotado.md",
+      "kind": "interpretation",
+      "git_blob_sha1": "8d1ad6b67f7a1240e2dc5fc2c013ac690fc997f8",
+      "source_url": null,
+      "edition": null,
+      "rights_status": "unverified",
+      "attribution": "Project material (authorship not independently verified)"
     },
     {
       "id": "escohotado-caos-y-orden-ing-inv",
@@ -46,7 +74,13 @@
       "year": 2026,
       "format": "MD",
       "category": "Sistemas Disipativos & Babylon60",
-      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/ingenieria_inversa_caos_y_orden_escohotado.md"
+      "local_path": "texts/ingenieria_inversa_caos_y_orden_escohotado.md",
+      "kind": "interpretation",
+      "git_blob_sha1": "8c556efc8082860eaf444d3db0f7f537e53c0b0a",
+      "source_url": null,
+      "edition": null,
+      "rights_status": "unverified",
+      "attribution": "Project material (authorship not independently verified)"
     },
     {
       "id": "escohotado-somos-informacion-somos-bytes-ing-inv",
@@ -55,7 +89,13 @@
       "year": 2026,
       "format": "MD",
       "category": "Información & Publicidad",
-      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/ingenieria_inversa_somos_informacion_somos_bytes_escohotado_segarra.md"
+      "local_path": "texts/ingenieria_inversa_somos_informacion_somos_bytes_escohotado_segarra.md",
+      "kind": "interpretation",
+      "git_blob_sha1": "d3d07e922d9e2282368f55ceefb4efb5d171a7ff",
+      "source_url": null,
+      "edition": null,
+      "rights_status": "unverified",
+      "attribution": "Project material (authorship not independently verified)"
     },
     {
       "id": "c5-real-sovereign-agent-manifesto",
@@ -64,7 +104,13 @@
       "year": 2026,
       "format": "MD",
       "category": "Gobernanza & Soberanía",
-      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/sovereign_agent_manifesto.md"
+      "local_path": "texts/sovereign_agent_manifesto.md",
+      "kind": "project_document",
+      "git_blob_sha1": "808c0159a8e7feb92fb4cd1413f7726d07980ec3",
+      "source_url": null,
+      "edition": null,
+      "rights_status": "unverified",
+      "attribution": "Project material (authorship not independently verified)"
     },
     {
       "id": "c5-real-trust-semantics",
@@ -73,7 +119,13 @@
       "year": 2026,
       "format": "MD",
       "category": "Seguridad & Inmunidad",
-      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/TRUST-SEMANTICS.md"
+      "local_path": "texts/TRUST-SEMANTICS.md",
+      "kind": "project_document",
+      "git_blob_sha1": "352c50495ecd122840fe9e9ee4c69d040def44ba",
+      "source_url": null,
+      "edition": null,
+      "rights_status": "unverified",
+      "attribution": "Project material (authorship not independently verified)"
     },
     {
       "id": "escohotado-formal-system",
@@ -82,7 +134,13 @@
       "year": 2026,
       "format": "MD",
       "category": "Lógica Matemática & Axiomática",
-      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/FORMAL_SYSTEM_ESCOHOTADO.md"
+      "local_path": "texts/FORMAL_SYSTEM_ESCOHOTADO.md",
+      "kind": "interpretation",
+      "git_blob_sha1": "ae97cd55125779007386e38fdcd0218497eadfac",
+      "source_url": null,
+      "edition": null,
+      "rights_status": "unverified",
+      "attribution": "Project material (authorship not independently verified)"
     },
     {
       "id": "c5-real-axioms",
@@ -91,7 +149,13 @@
       "year": 2026,
       "format": "MD",
       "category": "Epistemología & Causalidad",
-      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/AXIOMS.md"
+      "local_path": "texts/AXIOMS.md",
+      "kind": "project_document",
+      "git_blob_sha1": "523f9d9fdc114cbdeefcdec0e767edd3589c8a11",
+      "source_url": null,
+      "edition": null,
+      "rights_status": "unverified",
+      "attribution": "Project material (authorship not independently verified)"
     },
     {
       "id": "c5-real-cortex-capabilities",
@@ -100,7 +164,13 @@
       "year": 2026,
       "format": "MD",
       "category": "Arquitectura & Kernel",
-      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/CORTEX-CAPABILITIES.md"
+      "local_path": "texts/CORTEX-CAPABILITIES.md",
+      "kind": "project_document",
+      "git_blob_sha1": "d836ef516b67a6666591dc4ce7e2f6255c47c1f8",
+      "source_url": null,
+      "edition": null,
+      "rights_status": "unverified",
+      "attribution": "Project material (authorship not independently verified)"
     },
     {
       "id": "c5-real-cortex-native-technologies",
@@ -109,7 +179,13 @@
       "year": 2026,
       "format": "MD",
       "category": "Tecnología & Bajo Nivel",
-      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/CORTEX-NATIVE-TECHNOLOGIES.md"
+      "local_path": "texts/CORTEX-NATIVE-TECHNOLOGIES.md",
+      "kind": "project_document",
+      "git_blob_sha1": "0f0453becbb508c381ff289b9a7bc8697b049900",
+      "source_url": null,
+      "edition": null,
+      "rights_status": "unverified",
+      "attribution": "Project material (authorship not independently verified)"
     },
     {
       "id": "c5-real-cortex-architecture-whitepaper",
@@ -118,7 +194,13 @@
       "year": 2026,
       "format": "MD",
       "category": "Arquitectura de Sistemas",
-      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/CORTEX_ARCHITECTURE_WHITEPAPER.md"
+      "local_path": "texts/CORTEX_ARCHITECTURE_WHITEPAPER.md",
+      "kind": "project_document",
+      "git_blob_sha1": "a75b026b90a4e3f66738af2be6257a0785df2d1b",
+      "source_url": null,
+      "edition": null,
+      "rights_status": "unverified",
+      "attribution": "Project material (authorship not independently verified)"
     },
     {
       "id": "c5-real-immunity-layer",
@@ -127,7 +209,13 @@
       "year": 2026,
       "format": "MD",
       "category": "Seguridad & Inmunidad",
-      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/IMMUNITY-LAYER.md"
+      "local_path": "texts/IMMUNITY-LAYER.md",
+      "kind": "project_document",
+      "git_blob_sha1": "b48fec9ba0e22bdb9cb27cdbaecafcba72209c12",
+      "source_url": null,
+      "edition": null,
+      "rights_status": "unverified",
+      "attribution": "Project material (authorship not independently verified)"
     },
     {
       "id": "c5-real-cognitive-sovereignty-architectures",
@@ -136,7 +224,13 @@
       "year": 2026,
       "format": "MD",
       "category": "Soberanía Cognitiva",
-      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/cognitive_sovereignty_architectures.md"
+      "local_path": "texts/cognitive_sovereignty_architectures.md",
+      "kind": "project_document",
+      "git_blob_sha1": "bee8c1aa771f12f756ea02def011438905810f9b",
+      "source_url": null,
+      "edition": null,
+      "rights_status": "unverified",
+      "attribution": "Project material (authorship not independently verified)"
     },
     {
       "id": "c5-real-comparativa-memoria-agentes-ia-2026",
@@ -145,7 +239,13 @@
       "year": 2026,
       "format": "MD",
       "category": "Memoria & Sistemas Agénticos",
-      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/comparativa-memoria-agentes-ia-2026.md"
+      "local_path": "texts/comparativa-memoria-agentes-ia-2026.md",
+      "kind": "project_document",
+      "git_blob_sha1": "b7b3348270892e96c77633c4da9baaf67a09429c",
+      "source_url": null,
+      "edition": null,
+      "rights_status": "unverified",
+      "attribution": "Project material (authorship not independently verified)"
     },
     {
       "id": "c5-real-estado-publico-claims-y-limites",
@@ -154,7 +254,13 @@
       "year": 2026,
       "format": "MD",
       "category": "Gobernanza & Límites",
-      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/estado-publico-claims-y-limites.md"
+      "local_path": "texts/estado-publico-claims-y-limites.md",
+      "kind": "project_document",
+      "git_blob_sha1": "e838299af2ff5c50aa22e6f02d92447830bc88fe",
+      "source_url": null,
+      "edition": null,
+      "rights_status": "unverified",
+      "attribution": "Project material (authorship not independently verified)"
     },
     {
       "id": "c5-real-peano-soberano",
@@ -163,7 +269,13 @@
       "year": 2026,
       "format": "MD",
       "category": "Fundamentación Matemática",
-      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/peano-soberano.md"
+      "local_path": "texts/peano-soberano.md",
+      "kind": "project_document",
+      "git_blob_sha1": "a432a8313043e521a0f8ad76430fc142266e236e",
+      "source_url": null,
+      "edition": null,
+      "rights_status": "unverified",
+      "attribution": "Project material (authorship not independently verified)"
     },
     {
       "id": "c5-real-por-que-los-agentes-autonomos-se-descontrolan",
@@ -172,7 +284,13 @@
       "year": 2026,
       "format": "MD",
       "category": "Anergía & Control Cibernético",
-      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/por-que-los-agentes-autonomos-se-descontrolan.md"
+      "local_path": "texts/por-que-los-agentes-autonomos-se-descontrolan.md",
+      "kind": "project_document",
+      "git_blob_sha1": "5bac6b2c3f093e6760401af09fba4980fee1bcbc",
+      "source_url": null,
+      "edition": null,
+      "rights_status": "unverified",
+      "attribution": "Project material (authorship not independently verified)"
     },
     {
       "id": "c5-real-por-que-los-agentes-necesitan-memoria-con-evidencia",
@@ -181,7 +299,13 @@
       "year": 2026,
       "format": "MD",
       "category": "Memoria Criptográfica",
-      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/por-que-los-agentes-necesitan-memoria-con-evidencia.md"
+      "local_path": "texts/por-que-los-agentes-necesitan-memoria-con-evidencia.md",
+      "kind": "project_document",
+      "git_blob_sha1": "995f0692f88c83c3d6c8ae9918a7a6ead56af6c6",
+      "source_url": null,
+      "edition": null,
+      "rights_status": "unverified",
+      "attribution": "Project material (authorship not independently verified)"
     },
     {
       "id": "c5-real-que-es-un-agente-autonomo-de-verdad",
@@ -190,7 +314,13 @@
       "year": 2026,
       "format": "MD",
       "category": "Teoría de Agentes",
-      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/que-es-un-agente-autonomo-de-verdad.md"
+      "local_path": "texts/que-es-un-agente-autonomo-de-verdad.md",
+      "kind": "project_document",
+      "git_blob_sha1": "0f64a3d9fb3ab011f260152e535c024dbe37c4c1",
+      "source_url": null,
+      "edition": null,
+      "rights_status": "unverified",
+      "attribution": "Project material (authorship not independently verified)"
     },
     {
       "id": "c5-real-teorias-fundamentales",
@@ -199,7 +329,13 @@
       "year": 2026,
       "format": "MD",
       "category": "Teoría & Fundamentos",
-      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/teorias_fundamentales.md"
+      "local_path": "texts/teorias_fundamentales.md",
+      "kind": "project_document",
+      "git_blob_sha1": "d5ca9b6f3200f9e7b110760cfbc7896cd621d791",
+      "source_url": null,
+      "edition": null,
+      "rights_status": "unverified",
+      "attribution": "Project material (authorship not independently verified)"
     },
     {
       "id": "c5-real-termodinamica-enjambres",
@@ -208,7 +344,13 @@
       "year": 2026,
       "format": "MD",
       "category": "Termodinámica & Enjambres",
-      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/termodinamica_enjambres.md"
+      "local_path": "texts/termodinamica_enjambres.md",
+      "kind": "project_document",
+      "git_blob_sha1": "4a10442eb104008059f7fa61ee1db9581ca1a772",
+      "source_url": null,
+      "edition": null,
+      "rights_status": "unverified",
+      "attribution": "Project material (authorship not independently verified)"
     },
     {
       "id": "c5-real-ultrathink-vs-deep-think-2026",
@@ -217,7 +359,13 @@
       "year": 2026,
       "format": "MD",
       "category": "Física de Inferencia",
-      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/ultrathink-vs-deep-think-2026.md"
+      "local_path": "texts/ultrathink-vs-deep-think-2026.md",
+      "kind": "project_document",
+      "git_blob_sha1": "b2ff1bb6ed850d1cc9e7964ba66a7bd87988cc3f",
+      "source_url": null,
+      "edition": null,
+      "rights_status": "unverified",
+      "attribution": "Project material (authorship not independently verified)"
     },
     {
       "id": "c5-real-why-ai-agents-need-deterministic-guardrails",
@@ -226,7 +374,15 @@
       "year": 2026,
       "format": "MD",
       "category": "Seguridad Ring-0",
-      "local_path": "/Users/borjafernandezangulo/10_PROJECTS/escohotado-corpus/texts/why-ai-agents-need-deterministic-guardrails.md"
+      "local_path": "texts/why-ai-agents-need-deterministic-guardrails.md",
+      "kind": "project_document",
+      "git_blob_sha1": "ae36a23fde275907d5bff61731580d2277257916",
+      "source_url": null,
+      "edition": null,
+      "rights_status": "unverified",
+      "attribution": "Project material (authorship not independently verified)"
     }
-  ]
+  ],
+  "scope": "Mixed documentary collection; not the complete works of Antonio Escohotado.",
+  "provenance_note": "Git blob SHA-1 identifies repository bytes, not the source edition or redistribution rights. Source URLs and editions remain unverified."
 }
